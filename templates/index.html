@@ -3,27 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>Page Replacement Simulator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
         <h1>Page Replacement Algorithm Simulator</h1>
         <form id="simulator-form">
             <label for="reference-string">Reference String (comma-separated):</label>
-            <input type="text" id="reference-string" required>
+            <input type="text" id="reference-string" name="reference-string" required>
+            
             <label for="frame-count">Number of Frames:</label>
-            <input type="number" id="frame-count" required>
+            <input type="number" id="frame-count" name="frame-count" inputmode="numeric" min="1" required>
+            
             <label for="algorithm">Select Algorithm:</label>
-            <select id="algorithm">
+            <select id="algorithm" name="algorithm" required>
+                <option value="" disabled selected>Select an algorithm</option>
                 <option value="FIFO">FIFO</option>
                 <option value="LRU">LRU</option>
                 <option value="Optimal">Optimal</option>
             </select>
-            <button type="submit">Simulate</button>
+            
+            <button type="button" id="simulate-btn">Simulate</button>
         </form>
         <div id="result"></div>
     </div>
+
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
